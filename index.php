@@ -28,12 +28,29 @@ $link = Conectarse($host,$puerto,$user,$pw,$db);
         $query='SELECT * FROM usuarios';
         $result = mysqli_query($link,$query);
         $resultado=array();
+        header("HTTP/1.1 200 OK");
         while($extraerDatos=$result->fetch_assoc()){
         $resultado[]=$extraerDatos;
     }
         $json = json_encode($resultado);
            echo $json;
     
-}
+	}
+
+	if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+		$correo=$_POST['correo'];
+		$password=$_POST['password'];
+        $query='SELECT * FROM usuarios WHERE correo="'.$correo.'" && pass="'.$password.'"';
+        $result = mysqli_query($link,$query);
+        $resultado=array();
+        header("HTTP/1.1 200 OK");
+        while($extraerDatos=$result->fetch_assoc()){
+        $resultado[]=$extraerDatos;
+    }
+        $json = json_encode($resultado);
+           echo $json;
+    
+	}
+
 
     ?>
