@@ -21,17 +21,24 @@
        return $link; 
 }
 //conectarse a la bd
-    $link = Conectarse($host,$puerto,$user,$pw,$db);
+$link = Conectarse($host,$puerto,$user,$pw,$db);
 //metodo para ver los datos
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $query="SELECT * FROM productos WHERE catergoriaProductos=$categoria";
+    $correo=$_POST['correo'];
+    $password=$_POST['password'];
+    $query='SELECT * FROM usuarios WHERE correo="'.$correo.'" && pass="'.$password.'"';
     $result = mysqli_query($link,$query);
+
+
     $resultado=array();
+
     while($extraerDatos=$result->fetch_assoc()){
         $resultado[]=$extraerDatos;
     }
+
     echo json_encode($resultado);
+
     }
 
     ?>
