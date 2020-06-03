@@ -24,8 +24,10 @@
 $link = Conectarse($host,$puerto,$user,$pw,$db);
 //metodo para ver los datos
     
-    if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-        $query='SELECT * FROM usuarios';
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+    	$correo=$_POST['correo'];
+    	$password=$_POST['pass'];
+        $query='SELECT * FROM usuarios WHERE correo="'.$correo.' && pass="'.$password.'"';
         $result = mysqli_query($link,$query);
         $resultado=array();
         while($extraerDatos=$result->fetch_assoc()){
