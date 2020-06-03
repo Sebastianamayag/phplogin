@@ -25,30 +25,29 @@ $link = Conectarse($host,$puerto,$user,$pw,$db);
 //metodo para ver los datos
     
     if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-    //$correo=$_POST['correo'];
-    //$password=$_POST['password'];
+    
     if (isset($_GET['correo']) && isset($_GET['password'])){
-    $correo='sebasamaya.gomez@hotmail.com';
-    $password='matias2014se98';
+    $correo=$_POST['correo'];
+    $password=$_POST['password'];
     $query='SELECT * FROM usuarios WHERE correo="'.$correo.'" && pass="'.$password.'"';
     $result = mysqli_query($link,$query);
     $resultado=array();
     while($extraerDatos=$result->fetch_assoc()){
         $resultado[]=$extraerDatos;
+        
     }
-
-    $json = json_encode($resultado);
-    echo $jason;
-
+        $json = json_encode($resultado);
+        echo $json;
     }else{
         $query='SELECT * FROM usuarios';
         $result = mysqli_query($link,$query);
         $resultado=array();
         while($extraerDatos=$result->fetch_assoc()){
         $resultado[]=$extraerDatos;
+        
     }
         $json = json_encode($resultado);
-           echo $jason;
+           echo $json;
     }
 }
 
