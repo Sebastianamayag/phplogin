@@ -37,7 +37,8 @@ $link = Conectarse($host,$puerto,$user,$pw,$db);
         $resultado[]=$extraerDatos;
     }
 
-    echo json_encode($resultado);
+    $json = json_encode($resultado);
+    echo $jason;
 
     }else{
         $query='SELECT * FROM usuarios';
@@ -46,8 +47,8 @@ $link = Conectarse($host,$puerto,$user,$pw,$db);
         while($extraerDatos=$result->fetch_assoc()){
         $resultado[]=$extraerDatos;
     }
-
-        echo json_encode($resultado);
+        $json = json_encode($resultado);
+           echo $jason;
     }
 }
 
