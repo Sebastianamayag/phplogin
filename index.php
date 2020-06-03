@@ -32,10 +32,10 @@ $link = Conectarse($host,$puerto,$user,$pw,$db);
     $resultado=array();
     while($extraerDatos=$result->fetch_assoc()){
         $resultado[]=$extraerDatos;
-        
-    }
         $json = json_encode($resultado);
         echo $json;
+    }
+        
     
 }
 
